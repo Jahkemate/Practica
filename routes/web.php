@@ -28,7 +28,6 @@ Route::get('/notas',function() {
             'Nota 4: Estudiar Angular',
         
     ];
-
     return view('notes.index')->with('notes', $notes);
 });
 
