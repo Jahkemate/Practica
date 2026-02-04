@@ -1,8 +1,12 @@
-@extends('layouts.app') {{-- Para traer una sola plantilla --}}
+{{-- @extends('layouts.app') {{-- Para traer una sola plantilla --}}
 
-@section('title', 'Listado de notas') {{-- Para tener un titulo personalizado por cada pagina --}}
+{{-- @section('title', 'Listado de notas') --}} {{-- Para tener un titulo personalizado por cada pagina --}}
 
-@section('content')
+{{-- @section('content')  --}}
+
+
+<x-layout>
+    <x-slot name="title">Listado de notas</x-slot>{{-- Crea el titulo personalizado --}}
         <main class="content">
             <div class="cards">
                 <?php foreach($notes as $note): ?>
@@ -15,7 +19,7 @@
                         </div>
 
                         <footer class="card-footer">
-                            <a class="action-link action-edit">
+                            <a href="{{ url('notas/1/editar') }}"  class="action-link action-edit">
                                 <i class="icon icon-pen"></i>
                             </a>
                             <a class="action-link action-delete">
@@ -173,4 +177,5 @@
                 </div>
             </div>
         </main>
-@endsection
+</x-layout>
+{{-- @endsection --}}
