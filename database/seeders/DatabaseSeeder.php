@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call(NoteSeeder::class); //Se hace el llamado de nuestro seeder
     }
 }

@@ -31,7 +31,7 @@ Route::get('/notas',function() {
     return view('notes.index')->with('notes', $notes);
 })->name('notes.index'); /* para darle un nombre a las ruta, para no estarlas cambiando manualmente. */ 
 
-Route::get ('/notas/{id}/', function($id) {
+Route::get ('/notas/{id}', function($id) {
     return 'Editar notas: '.$id;
 })->name('notes.view');
 

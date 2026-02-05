@@ -57,7 +57,7 @@
                 </div>
                 <div class="card card-small">
                     <div class="card-body">
-                        <h4>¿Que es Composer?</h4>
+                        <h4>¿Para que sirve Composer?</h4>
 
                         <p>
                             Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony,
