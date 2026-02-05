@@ -13,6 +13,12 @@
                     <div class="card-body">
                         <h1>Nueva nota</h1>
 
+                        @if ($errors->any())
+                            <p class="error-message"><strong>Hay errores en el
+                             formulario, porfavor corrigelos e intenta nuevamente.</strong></p>
+                        
+                        @endif
+
                         <form action="{{ route('notes.store') }}" method="POST">
                             @csrf
 
