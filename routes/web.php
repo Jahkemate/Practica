@@ -2,7 +2,7 @@
 use App\Models\Note;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +20,9 @@ Route::get('/home', function () {
 
 //////////////////////////////////////////////////////////////////
 Route::get('/notas',function() {
-
+//Obtener todas las notas
     $notes = Note::all();
-
+//Retornar la vista con las notas
     return view('notes.index')->with('notes', $notes);
 
 })->name('notes.index'); /* para darle un nombre a las ruta, para no estarlas cambiando manualmente. */ 
@@ -38,19 +38,27 @@ Route::get ('/notas/crear',function() {
 
 })->name('notes.create');
 /////////////////////////////////////////////////////////////////////
-Route::post('/notas', function(){
+Route::post('/notas', function (Request $request) {
+
+//Validacion de los datos
+    $request->validate([
+        'title' => ['required', 'min:3', 'unique:notes,title'],
+        'content' => 'required',
+    ]);
+//Guardar en la base de datos
     Note::create ([
-        'title' => Request::input('title'),
-        'content' => Request::input('content'),
+        'title' => $request->input('title'),
+        'content' => $request->input('content'),
     ]);
 
 
-    return redirect()->route('notes.index');
+    return back();
 })->name('notes.store');
 
 
 /////////////////////////////////////////////////////////////////////
 Route::get ('/notas/{id}/editar', function($id) {
+//
    $note = DB::table('notes')-> find($id);
 
     return 'Editar nota:  ' .$note->title;
