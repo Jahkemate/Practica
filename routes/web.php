@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,28 +21,28 @@ Route::get('/home', function () {
 
 Route::get('/notas',function() {
 
-    $notes = [
+    $notes = DB::table('notes')-> get();
 
-            'Nota 1: Estudiar Laravel',
-            'Nota 2: Estudiar Vue.js',
-            'Nota 3: Estudiar React',
-            'Nota 4: Estudiar Angular',
-        
-    ];
     return view('notes.index')->with('notes', $notes);
+
 })->name('notes.index'); /* para darle un nombre a las ruta, para no estarlas cambiando manualmente. */ 
 
+
 Route::get ('/notas/{id}', function($id) {
-    return 'Editar notas: '.$id;
+    return 'Detalle de la nota '.$id;
 })->name('notes.view');
+
 
 Route::get ('/notas/crear',function() {
     return view('notes.create');
 })->name('notes.create');
 
+
 Route::get ('/notas/{id}/editar', function($id) {
-    return 'Detalle de la nota '.$id;
-});
+   $note = DB::table('notes')-> find($id);
+
+    return 'Editar nota:  ' .$note->title;
+})->name('notes.edit');
 
 
 
