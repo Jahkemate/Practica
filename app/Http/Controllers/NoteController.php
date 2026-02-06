@@ -50,9 +50,12 @@ class NoteController
     public  function edit($id) {
 //Obtener la nota de la base de datos
    $note = Note::findOrFail($id);
+//Retornar la vista con la nota
+    return view('notes.edit', ['note' => $note]); //Otra forma de pasar datos a la vista
+}
 
-    return 'Editar nota:  ' .$note->title;
-
+public function update($id){
+    dd('Updating: $id'); 
 }
 
 }
