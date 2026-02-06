@@ -54,8 +54,31 @@ class NoteController
     return view('notes.edit', ['note' => $note]); //Otra forma de pasar datos a la vista
 }
 
-public function update($id){
-    dd('Updating: $id'); 
+public function update($id, Request $request) {
+    $note = Note::findOrFail($id);
+
+    //Validacion de los datos
+    $request->validate([
+        'title' => ['required', 'min:3', Rule::unique('notes')->ignore($id)],
+        'content' => 'required',
+    ]);
+
+    //Actualizar la nota en la base de datos
+    $note->update([
+        'title' => $request->input('title'),
+        'content' => $request->input('content'),
+    ]);
+
+
+    return to_route('notes.index'); //Redireccionar a la lista de notas
+}
+
+ public function destroy($id) {
+    $note = Note::findOrFail($id);
+    $note->delete();
+
+    return to_route('notes.index');
+
 }
 
 }

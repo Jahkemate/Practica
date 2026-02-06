@@ -12,11 +12,15 @@
                 <div class="card card-center">
                     <div class="card-body">
                         <h1>Nueva nota</h1>
-
-                        @if ($errors->any())
-                            <p class="error-message"><strong>Hay errores en el
-                             formulario, porfavor corrigelos e intenta nuevamente.</strong></p>
-                        
+{{-- // Si hay errores en el formulario, se muestra un mensaje de error y una lista de los errores --}}                        @if($errors->any())
+                            <div class="errors">
+                                <p><strong>El formulario contiene errores, por favor corrígelos e intenta nuevamente:</strong></p>
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
 
                         <form action="{{ route('notes.store') }}" method="POST">

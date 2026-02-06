@@ -34,8 +34,11 @@ Route::post('/notas', [NoteController::class, 'store'])->name('notes.store');
 //Ruta para mostrar el formulario de edicion de notas
 Route::get ('/notas/{id}/editar',[NoteController::class, 'edit'])->name('notes.edit');
 
-
+//Ruta para actualizar las notas
 Route::put ('/notas/{id}/',[NoteController::class, 'update'])->name('notes.update');
+
+
+Route::delete ('/notas/{id}/',[NoteController::class, 'destroy'])->name('notes.destroy');
 
 
 

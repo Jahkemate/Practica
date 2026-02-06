@@ -17,6 +17,15 @@
                                 {{ $note->content }}
 
                             </p>
+
+                            <form method="POST" action="{{ route('notes.destroy',$note) }}">
+                                @method('DELETE')
+                                @csrf
+
+
+                                <button>Eliminar</button>
+                            </form>
+
                         </div>
 
                         <footer class="card-footer">
