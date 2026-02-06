@@ -1,18 +1,19 @@
-{{-- @extends('layouts.app')
+{{-- @extends('layouts.app')--}}
 
 @section('title', 'Crear nueva nota') {{-- Para tener un titulo personalizado por cada pagina --}}
 
 {{-- @include('layouts.header') {{-- Trae el header de la plantilla de Header (Layouts) --}}
-{{-- @section('content') --}}
+{{-- @section('content') --}}--}}
 
 <x-layout>
-    <x-slot name="title">Crear nueva nota</x-slot>{{-- Crea el titulo personalizado --}}
+    <x-slot name="title">Crear nueva nota</x-slot>
     <main class="content">
             <div class="cards">
                 <div class="card card-center">
                     <div class="card-body">
                         <h1>Nueva nota</h1>
-{{-- // Si hay errores en el formulario, se muestra un mensaje de error y una lista de los errores --}}                        @if($errors->any())
+{{-- // Si hay errores en el formulario, se muestra un mensaje de error y una lista de los errores --}}                        
+                        @if($errors->any())
                             <div class="errors">
                                 <p><strong>El formulario contiene errores, por favor corrígelos e intenta nuevamente:</strong></p>
                                 <ul>
@@ -47,5 +48,5 @@
             </div>
         </main>
 </x-layout>
-{{-- @include('layouts.footer') {{-- Esto trae el footer desde la plantilla footer (Layouts) --}}
+{{-- @include('layouts.footer') {{-- Esto trae el footer desde la plantilla footer (Layouts) --}}--}}
 {{-- @endsection --}}

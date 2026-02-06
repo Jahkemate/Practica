@@ -14,7 +14,7 @@
             <nav class="main-nav">
                 <ul class="main-nav-list">
                     <li class="main-nav-item">
-                        <a href="{{ route('notes.index') }}" class="main-nav-link"> {{-- Usando la ruta nombrada con el helper route('nombre.ruta') --}}
+                        <a href="{{ route('notes.index') }}" class="main-nav-link"> 
                             <i class="icon icon-th-list"></i>
                             <span>Ver notas</span>
                         </a>

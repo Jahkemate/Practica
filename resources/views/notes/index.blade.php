@@ -1,8 +1,3 @@
-{{-- @extends('layouts.app') {{-- Para traer una sola plantilla --}}
-
-{{-- @section('title', 'Listado de notas') --}} {{-- Para tener un titulo personalizado por cada pagina --}}
-
-{{-- @section('content')  --}}
 <x-layout>
     <x-slot name="title">Listado de notas</x-slot>{{-- Crea el titulo personalizado --}}
         <main class="content">

@@ -1,8 +1,8 @@
-{{-- @extends('layouts.app')
+{{-- @extends('layouts.app')--}}
 
 @section('title', 'Crear nueva nota') {{-- Para tener un titulo personalizado por cada pagina --}}
 
-{{-- @include('layouts.header') {{-- Trae el header de la plantilla de Header (Layouts) --}}
+{{-- @include('layouts.header') {{-- Trae el header de la plantilla de Header (Layouts) --}}--}}
 {{-- @section('content') --}}
 
 <x-layout>
@@ -44,5 +44,5 @@
             </div>
         </main>
 </x-layout>
-{{-- @include('layouts.footer') {{-- Esto trae el footer desde la plantilla footer (Layouts) --}}
+{{-- @include('layouts.footer') {{-- Esto trae el footer desde la plantilla footer (Layouts) --}}--}}
 {{-- @endsection --}}
