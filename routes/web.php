@@ -3,6 +3,7 @@ use App\Models\Note;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Controllers\NoteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,51 +19,20 @@ Route::get('/home', function () {
     return 'Pagina de inicio';
 });
 
-//////////////////////////////////////////////////////////////////
-Route::get('/notas',function() {
-//Obtener todas las notas
-    $notes = Note::all();
-//Retornar la vista con las notas
-    return view('notes.index')->with('notes', $notes);
+//Ruta para mostrar las notas
+Route::get('/notas',[NoteController::class, 'index'])->name('notes.index'); /* para darle un nombre a las ruta, para no estarlas cambiando manualmente. */ 
 
-})->name('notes.index'); /* para darle un nombre a las ruta, para no estarlas cambiando manualmente. */ 
+//Ruta para mostrar el detalle de una nota
+Route::get ('/notas/{id}',[NoteController::class, 'show'])->name('notes.view');
 
-///////////////////////////////////////////////////////////////////
-Route::get ('/notas/{id}', function($id) {
-    return 'Detalle de la nota '.$id;
-})->name('notes.view');
+//Ruta para mostrar el formulario de creacion de notas
+Route::get ('/notas/crear',[NoteController::class, 'create'])->name('notes.create');
 
-////////////////////////////////////////////////////////////////////
-Route::get ('/notas/crear',function() {
-    return view('notes.create');
+//Ruta para guardar las notas
+Route::post('/notas', [NoteController::class, 'store'])->name('notes.store');
 
-})->name('notes.create');
-/////////////////////////////////////////////////////////////////////
-Route::post('/notas', function (Request $request) {
-
-//Validacion de los datos
-    $request->validate([
-        'title' => ['required', 'min:3', 'unique:notes,title'],
-        'content' => 'required',
-    ]);
-//Guardar en la base de datos
-    Note::create ([
-        'title' => $request->input('title'),
-        'content' => $request->input('content'),
-    ]);
-
-
-    return back();
-})->name('notes.store');
-
-
-/////////////////////////////////////////////////////////////////////
-Route::get ('/notas/{id}/editar', function($id) {
-//
-   $note = DB::table('notes')-> find($id);
-
-    return 'Editar nota:  ' .$note->title;
-})->name('notes.edit');
+//Ruta para mostrar el formulario de edicion de notas
+Route::get ('/notas/{id}/editar',[NoteController::class, 'edit'])->name('notes.edit');
 
 
 
