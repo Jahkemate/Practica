@@ -16,4 +16,9 @@ class Note extends Model
     {
          return route('notes.edit', ['id' => $this->id]);
     }
+
+    public function destroyUrl()
+    {
+         return route('notes.destroy', ['id' => $this->id]);
+    }
 }

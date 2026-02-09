@@ -72,7 +72,8 @@ public function update($id, Request $request) {
 
     return to_route('notes.index'); //Redireccionar a la lista de notas
 }
-
+ 
+//Metodo para eliminar las notas con softdelete
  public function destroy($id) {
     $note = Note::findOrFail($id);
     $note->delete();

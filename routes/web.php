@@ -37,7 +37,7 @@ Route::get ('/notas/{id}/editar',[NoteController::class, 'edit'])->name('notes.e
 //Ruta para actualizar las notas
 Route::put ('/notas/{id}/',[NoteController::class, 'update'])->name('notes.update');
 
-
+//Ruta para eliminar las notas
 Route::delete ('/notas/{id}/',[NoteController::class, 'destroy'])->name('notes.destroy');
 
 

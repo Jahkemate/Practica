@@ -27,9 +27,13 @@
                             <a href="{{ $note->editUrl() }}"  class="action-link action-edit">
                                 <i class="icon icon-pen"></i>
                             </a>
-                            <a class="action-link action-delete">
+                            <a href="{{ $note->destroyUrl() }}" class="action-link action-delete" onclick="event.preventDefault(); document.getElementById('delete-note-{{$note->id}}').submit();">
                                 <i class="icon icon-trash"></i>
                             </a>
+                             <form id="delete-note-{{$note->id}}" method="POST" action="{{ route('notes.destroy', $note) }}" style="display: none;">
+                                @method('DELETE')
+                                @csrf
+                            </form>
                         </footer>
                     </div>
                 @empty
